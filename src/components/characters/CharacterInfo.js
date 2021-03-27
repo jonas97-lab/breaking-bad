@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useParams, useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams, useHistory } from 'react-router-dom';
 
 const CharacterInfo = () => {
-	const { id } = useParams()
+	const { id } = useParams();
 
-	const [todoDetails, setTodoDetails] = useState([])
-	let history = useHistory()
+	const [todoDetails, setTodoDetails] = useState([]);
+	let history = useHistory();
+
+	function handleClick() {
+		history.push('/');
+	}
 
 	useEffect(() => {
 		axios
 			.get(`https://www.breakingbadapi.com/api/characters/${id}`)
 			.then((result) => {
-				setTodoDetails(result.data)
-			})
-	})
-
-	const removeCharacter = () => {
-		axios
-			.delete(`https://www.breakingbadapi.com/api/characters/${id}`)
-			.then(response => console.log(response.data))
-			.catch(err => console.error(err))
-		// history.push('/')
-	}
+				setTodoDetails(result.data);
+			});
+	});
 
 	return (
 		<>
@@ -39,8 +35,8 @@ const CharacterInfo = () => {
 							<h2>Nickname: {todoDetail.nickname}</h2>
 							<h2>Birthday: {todoDetail.birthday}</h2>
 							<h2>Portrayed: {todoDetail.portrayed}</h2>
-							<button className='btn' onClick={removeCharacter}>
-								Delete
+							<button className='btn' type='button' onClick={handleClick}>
+								Homepage
 							</button>
 						</div>
 					))}
@@ -49,6 +45,6 @@ const CharacterInfo = () => {
 				<h1>Loading...</h1>
 			)}
 		</>
-	)
-}
-export default CharacterInfo
+	);
+};
+export default CharacterInfo;
