@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
 
 const CharacterInfo = () => {
-	const { id } = useParams();
-
 	const [todoDetails, setTodoDetails] = useState([]);
+
+	const { id } = useParams();
 	let history = useHistory();
 
 	function handleClick() {
@@ -25,17 +25,21 @@ const CharacterInfo = () => {
 			{todoDetails ? (
 				<div>
 					{todoDetails.map((todoDetail) => (
-						<div key={todoDetail.id}>
+						<div className='card-info' key={todoDetail.id}>
 							<img
 								className='card'
 								src={todoDetail.img}
 								alt={todoDetail.name}
 							/>
-							<h1>{todoDetail.name}</h1>
-							<h2>Nickname: {todoDetail.nickname}</h2>
-							<h2>Birthday: {todoDetail.birthday}</h2>
-							<h2>Portrayed: {todoDetail.portrayed}</h2>
-							<button className='btn' type='button' onClick={handleClick}>
+							<h2>{todoDetail.name}</h2>
+							<p>Nickname: {todoDetail.nickname}</p>
+							<p>Birthday: {todoDetail.birthday}</p>
+							<p>Portrayed: {todoDetail.portrayed}</p>
+							<button
+								className='btn btn__homePage'
+								type='button'
+								onClick={handleClick}
+							>
 								Homepage
 							</button>
 						</div>
@@ -47,4 +51,5 @@ const CharacterInfo = () => {
 		</>
 	);
 };
+
 export default CharacterInfo;

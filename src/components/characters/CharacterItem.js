@@ -16,7 +16,7 @@ const CharacterItem = ({ character }) => {
 					<h1>{name}</h1>
 					<ul></ul>
 					<button
-						className='btn'
+						className='btn btn__moreInfo'
 						onClick={() => history.push(`/characters/${id}`)}
 					>
 						More Information

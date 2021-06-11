@@ -6,7 +6,7 @@ export const Header = () => {
 	return (
 		<header className='center'>
 			<Link to='/'>
-				<img src={Logo} alt='breaking-bad-logo' />
+				<img src={Logo} alt='Breaking Bad logo' />
 			</Link>
 		</header>
 	);
